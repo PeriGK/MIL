@@ -1,6 +1,6 @@
 #!/usr/bin/env python
-
 import logging
+
 database = {'host': 'localhost',
             'username': 'root',
             'password': 'my secret password',
@@ -8,4 +8,4 @@ database = {'host': 'localhost',
 
 log_dir = './'
 log_file = 'mil.out'
-log_level=logging.INFO
+log_level = logging.INFO
