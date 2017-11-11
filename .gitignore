@@ -3,3 +3,5 @@ bin/
 lib/
 *.out
 pip-selfcheck.json
+conf/__pycache__/
+initialisers/__pycache__/database.cpython-34.pyc

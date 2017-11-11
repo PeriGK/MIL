@@ -1,9 +1,17 @@
-import logging
+import logging, sys
 from logging.handlers import TimedRotatingFileHandler
 
 
-def create_hourly_rotating_log(path, log_level):
+def initialise_logging(path, log_level):
+    formatter = logging.Formatter(fmt='%(asctime)s %(levelname)-8s %(message)s',
+                                  datefmt='%Y-%m-%d %H:%M:%S')
+    handler = logging.FileHandler(path, mode='w')
+    handler.setFormatter(formatter)
+    screen_handler = logging.StreamHandler(stream=sys.stdout)
+    screen_handler.setFormatter(formatter)
     logger = logging.getLogger()
     logger.setLevel(log_level)
-    log_handler = TimedRotatingFileHandler(path, when="m", interval=60, backupCount=10)
-    logger.addHandler(log_handler)
+    logger.addHandler(handler)
+    logger.addHandler(screen_handler)
+    logging.info('Hourly logging initialised')
+    return logger
